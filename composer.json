@@ -1,0 +1,29 @@
+{
+    "name": "cccdl/adapay_sdk",
+    "description": "支汇付天下API SDK for PHP !",
+    "homepage": "https://github.com/cccdl/adapay_sdk",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cccdl\\AdapaySdk\\": "src/"
+        }
+    },
+    "keywords": [
+        "cccdl",
+        "汇付",
+        "汇付天下",
+        "adapay",
+        "pay",
+        "adapay_sdk"
+    ],
+    "authors": [
+        {
+            "name": "cccdl",
+            "email": "568078220@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    }
+}
