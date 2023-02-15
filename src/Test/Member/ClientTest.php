@@ -21,8 +21,8 @@ class ClientTest extends TestCase
     public function testQuery(): void
     {
         $params = [
-            'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
-            'member_id' => '3_431021199606114525',
+            'app_id' => '',
+            'member_id' => '',
         ];
         $config = Config::getConfig();
         $adapayConfig = new AdapayConfig($config);
@@ -41,8 +41,8 @@ class ClientTest extends TestCase
     public function testCreate(): void
     {
         $params = [
-            'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
-            'member_id' => '3_qingyu_test',
+            'app_id' => '',
+            'member_id' => '',
         ];
         $config = Config::getConfig();
         $adapayConfig = new AdapayConfig($config);
@@ -58,4 +58,6 @@ class ClientTest extends TestCase
         //断言正常结果
         $this->assertEquals('succeeded', $res['data']['status']);
     }
+
+
 }

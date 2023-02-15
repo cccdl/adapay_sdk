@@ -19,6 +19,7 @@
 - 1.1.0 增加【查询用户对象】接口
 - 1.2.0 增加【创建用户对象】接口、优化返回结果，统一返回数组
 - 2.0.0 解耦配置文件、方便多次调用
+- 2.1.0 增加【创建结算账户对象】【查询结算账户对象】【删除结算账户对象】接口
 
 ### 更新计划
 
@@ -34,11 +35,14 @@ $ composer require cccdl/yunxin_sdk
 
 ### 接口对应文件
 
-| 文件                | 方法          | 说明     |
-|-------------------|-------------|--------|
-| SettleAccount.php | `balance()` | 查询余额   |
-| Member.php        | `query()`   | 查询用户对象 |
-| Member.php        | `create()`  | 创建用户对象 |
+| 文件                | 方法          | 说明       |
+|-------------------|-------------|----------|
+| SettleAccount.php | `balance()` | 查询余额     |
+| SettleAccount.php | `query()`   | 查询结算账户对象 |
+| SettleAccount.php | `create()`  | 创建结算账户对象 |
+| SettleAccount.php | `delete()`  | 删除结算账户对象 |
+| Member.php        | `query()`   | 查询用户对象   |
+| Member.php        | `create()`  | 创建用户对象   |
 
 ### 快速使用
 
