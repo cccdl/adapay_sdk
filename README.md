@@ -18,6 +18,7 @@
 - 1.0.2 兼容php7.3版本
 - 1.1.0 增加【查询用户对象】接口
 - 1.2.0 增加【创建用户对象】接口、优化返回结果，统一返回数组
+- 2.0.0 解耦配置文件、方便多次调用
 
 ### 更新计划
 
@@ -56,7 +57,8 @@ $params = [
 $config = [
 
 ];
-$service = new SettleAccount($config);
+$adapayConfig = new AdapayConfig($config);
+$service = new SettleAccount($adapayConfig);
 $res = $service->balance($params);
 //结果
 var_dump($res);
