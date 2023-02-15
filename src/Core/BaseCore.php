@@ -2,6 +2,7 @@
 
 namespace cccdl\adapay\Core;
 
+use cccdl\adapay\Exception\cccdlException;
 use cccdl\adapay\Traits\Request;
 use Exception;
 
@@ -40,15 +41,23 @@ class BaseCore
      */
     private $header;
 
-    protected $apiKeyLive;
-    protected $rsaPrivateKey;
-    protected $rsaPublicKey;
+    /**
+     * @var
+     */
+    protected $adapayConfig;
 
-    public function __construct($config)
+
+    /**
+     * @throws cccdlException
+     */
+    public function __construct($adapayConfig)
     {
-        $this->apiKeyLive = $config['api_key_live'];
-        $this->rsaPrivateKey = $config['rsa_private_key'];
-        $this->rsaPublicKey = $config['rsa_public_key'];
+
+        if (!($adapayConfig instanceof AdapayConfig)) {
+            throw new cccdlException('配置异常');
+        }
+
+        $this->adapayConfig = $adapayConfig;
     }
 
     /**
@@ -103,7 +112,7 @@ class BaseCore
     protected function setGetHeader(): void
     {
         $this->header['Content-Type'] = 'text/html';
-        $this->header['Authorization'] = $this->apiKeyLive;
+        $this->header['Authorization'] = $this->adapayConfig->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, http_build_query($this->params));
         var_dump($this->header);
     }
@@ -116,7 +125,7 @@ class BaseCore
     protected function setPostHeader(): void
     {
         $this->header['Content-Type'] = 'application/json';
-        $this->header['Authorization'] = $this->apiKeyLive;
+        $this->header['Authorization'] = $this->adapayConfig->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, $this->params);
         var_dump($this->header);
     }
@@ -147,7 +156,7 @@ class BaseCore
      */
     private function sha1WithRsa($data): string
     {
-        $priKey = $this->rsaPrivateKey;
+        $priKey = $this->adapayConfig->rsaPrivateKey;
         $key = "-----BEGIN PRIVATE KEY-----\n" . wordwrap($priKey, 64, "\n", true) . "\n-----END PRIVATE KEY-----";
         try {
             openssl_sign($data, $signature, $key);

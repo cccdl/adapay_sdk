@@ -2,14 +2,22 @@
 
 namespace cccdl\adapay\Test\Member;
 
+use cccdl\adapay\Core\AdapayConfig;
+use cccdl\adapay\Exception\cccdlException;
 use cccdl\adapay\Member\Member;
 use cccdl\adapay\Test\Config;
+use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
 
 require '../../../vendor/autoload.php';
 
 class ClientTest extends TestCase
 {
+    /**
+     * @return void
+     * @throws GuzzleException
+     * @throws cccdlException
+     */
     public function testQuery(): void
     {
         $params = [
@@ -17,7 +25,8 @@ class ClientTest extends TestCase
             'member_id' => '3_431021199606114525',
         ];
         $config = Config::getConfig();
-        $service = new Member($config);
+        $adapayConfig = new AdapayConfig($config);
+        $service = new Member($adapayConfig);
         $res = $service->query($params);
         var_dump($res);
 
@@ -36,7 +45,8 @@ class ClientTest extends TestCase
             'member_id' => '3_qingyu_test',
         ];
         $config = Config::getConfig();
-        $service = new Member($config);
+        $adapayConfig = new AdapayConfig($config);
+        $service = new Member($adapayConfig);
         $res = $service->create($params);
 
 

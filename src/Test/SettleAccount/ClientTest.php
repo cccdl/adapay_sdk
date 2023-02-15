@@ -2,6 +2,7 @@
 
 namespace cccdl\adapay\Test\SettleAccount;
 
+use cccdl\adapay\Core\AdapayConfig;
 use cccdl\adapay\Settle\SettleAccount;
 use cccdl\adapay\Test\Config;
 use PHPUnit\Framework\TestCase;
@@ -15,10 +16,11 @@ class ClientTest extends TestCase
         $params = [
             'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
             'member_id' => 0,
-            'acct_type' => '03',
+            'acct_type' => '02',
         ];
         $config = Config::getConfig();
-        $service = new SettleAccount($config);
+        $adapayConfig = new AdapayConfig($config);
+        $service = new SettleAccount($adapayConfig);
         $res = $service->balance($params);
         var_dump($res);
 
