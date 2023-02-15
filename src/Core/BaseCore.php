@@ -59,16 +59,29 @@ class BaseCore
     protected function setUrl($str): void
     {
         $this->url = $this->baseUri . $this->endpoint . $str;
+
+        var_dump($this->url);
     }
 
     /**
-     * 设置参数
+     * 设置get参数
      * @param $params
      * @return void
      */
-    protected function setParams($params): void
+    protected function setGetParams($params): void
     {
         ksort($params);
+        $this->params = $this->doEmptyData($params);
+    }
+
+
+    /**
+     * 设置post参数
+     * @param $params
+     * @return void
+     */
+    protected function setPostParams($params): void
+    {
         $this->params = $this->doEmptyData($params);
     }
 
@@ -84,14 +97,28 @@ class BaseCore
     }
 
     /**
-     * 设置头部
+     * 设置get头部
      * @return void
      */
-    protected function setHeader(): void
+    protected function setGetHeader(): void
     {
         $this->header['Content-Type'] = 'text/html';
         $this->header['Authorization'] = $this->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, http_build_query($this->params));
+        var_dump($this->header);
+    }
+
+
+    /**
+     * 设置post头部
+     * @return void
+     */
+    protected function setPostHeader(): void
+    {
+        $this->header['Content-Type'] = 'application/json';
+        $this->header['Authorization'] = $this->apiKeyLive;
+        $this->header['Signature'] = $this->generateSignature($this->url, $this->params);
+        var_dump($this->header);
     }
 
 

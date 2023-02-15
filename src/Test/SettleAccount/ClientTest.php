@@ -15,13 +15,17 @@ class ClientTest extends TestCase
         $params = [
             'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
             'member_id' => 0,
-            'acct_type' => '02',
+            'acct_type' => '03',
         ];
         $config = Config::getConfig();
         $service = new SettleAccount($config);
         $res = $service->balance($params);
-        $data = json_decode($res['data'], true);
-        var_dump($data);
-        $this->assertEquals('succeeded', $data['status']);
+        var_dump($res);
+
+        //断言错误结果
+        $this->assertEquals('failed', $res['data']['status']);
+
+        //断言正常结果
+        $this->assertEquals('succeeded', $res['data']['status']);
     }
 }
