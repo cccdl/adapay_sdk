@@ -15,34 +15,34 @@ class SettleAccount
      * 请求域名
      * @var string
      */
-    private string $baseUri = 'https://api.adapay.tech';
+    private $baseUri = 'https://api.adapay.tech';
 
     /**
      * 请求前缀
      * @var string
      */
-    private string $endpoint = '/v1/settle_accounts/';
+    private $endpoint = '/v1/settle_accounts/';
 
     /**
      * 请求最终url
      * @var string
      */
-    private string $url;
-    private string $apiKeyLive;
-    private string $rsaPrivateKey;
-    private string $rsaPublicKey;
+    private $url;
+    private $apiKeyLive;
+    private $rsaPrivateKey;
+    private $rsaPublicKey;
 
     /**
      * 请求参数
      * @var array
      */
-    private array $params;
+    private $params;
 
     /**
      * 头部
      * @var array|string[]
      */
-    private array $header;
+    private $header;
 
     public function __construct($config)
     {
