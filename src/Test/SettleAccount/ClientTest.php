@@ -13,7 +13,7 @@ class ClientTest extends TestCase
     public function testBalance(): void
     {
         $params = [
-            'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
+            'app_id' => '',
             'member_id' => 0,
         ];
         $config = Config::getConfig();
