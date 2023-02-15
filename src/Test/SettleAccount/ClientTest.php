@@ -15,6 +15,7 @@ class ClientTest extends TestCase
         $params = [
             'app_id' => 'app_50831819-fc9e-4d2d-910c-c0e99b76e998',
             'member_id' => 0,
+            'acct_type' => '02',
         ];
         $config = Config::getConfig();
         $service = new SettleAccount($config);

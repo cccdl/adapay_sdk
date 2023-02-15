@@ -2,8 +2,13 @@
 
 namespace cccdl\adapay\Core;
 
+use cccdl\adapay\Traits\Request;
+use Exception;
+
 class BaseCore
 {
+    use Request;
+
     /**
      * 请求域名
      * @var string
@@ -14,7 +19,7 @@ class BaseCore
      * 请求最终url
      * @var string
      */
-    private $url;
+    protected $url;
 
     /**
      * 请求前缀
@@ -44,10 +49,6 @@ class BaseCore
         $this->apiKeyLive = $config['api_key_live'];
         $this->rsaPrivateKey = $config['rsa_private_key'];
         $this->rsaPublicKey = $config['rsa_public_key'];
-
-        var_dump($this->apiKeyLive);
-        var_dump($this->rsaPrivateKey);
-        var_dump($this->rsaPublicKey);
     }
 
     /**
@@ -58,7 +59,6 @@ class BaseCore
     protected function setUrl($str): void
     {
         $this->url = $this->baseUri . $this->endpoint . $str;
-        var_dump($this->url);
     }
 
     /**
@@ -70,7 +70,6 @@ class BaseCore
     {
         ksort($params);
         $this->params = $this->doEmptyData($params);
-        var_dump($this->params);
     }
 
 
@@ -93,8 +92,6 @@ class BaseCore
         $this->header['Content-Type'] = 'text/html';
         $this->header['Authorization'] = $this->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, http_build_query($this->params));
-
-        var_dump($this->header);
     }
 
 
