@@ -68,8 +68,6 @@ class BaseCore
     protected function setUrl($str): void
     {
         $this->url = $this->baseUri . $this->endpoint . $str;
-
-        var_dump($this->url);
     }
 
     /**
@@ -114,7 +112,6 @@ class BaseCore
         $this->header['Content-Type'] = 'text/html';
         $this->header['Authorization'] = $this->adapayConfig->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, http_build_query($this->params));
-        var_dump($this->header);
     }
 
 
@@ -127,7 +124,6 @@ class BaseCore
         $this->header['Content-Type'] = 'application/json';
         $this->header['Authorization'] = $this->adapayConfig->apiKeyLive;
         $this->header['Signature'] = $this->generateSignature($this->url, $this->params);
-        var_dump($this->header);
     }
 
 
