@@ -1,61 +1,50 @@
 <?php
 
-namespace cccdl\adapay\Test\Member;
-
 use cccdl\adapay\Core\AdapayConfig;
-use cccdl\adapay\Exception\cccdlException;
-use cccdl\adapay\Member\Member;
+use cccdl\adapay\Refund\Refund;
 use cccdl\adapay\Test\Config;
-use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
 
 require '../../../vendor/autoload.php';
 
 class ClientTest extends TestCase
 {
-    /**
-     * @return void
-     * @throws GuzzleException
-     * @throws cccdlException
-     */
-    public function testQuery(): void
-    {
-        $params = [
-            'app_id' => '',
-            'member_id' => '',
-        ];
-        $config = Config::getConfig();
-        $adapayConfig = new AdapayConfig($config);
-        $service = new Member($adapayConfig);
-        $res = $service->query($params);
-        echo json_encode($res, JSON_UNESCAPED_UNICODE);
-
-        //断言错误结果
-        $this->assertEquals('failed', $res['data']['status']);
-
-        //断言正常结果
-        $this->assertEquals('succeeded', $res['data']['status']);
-    }
-
-
     public function testCreate(): void
     {
         $params = [
-            'app_id' => '',
-            'member_id' => '',
+            'id' => '',
+            'refund_order_no' => '',
+            'refund_amt' => '6.00'
         ];
         $config = Config::getConfig();
         $adapayConfig = new AdapayConfig($config);
-        $service = new Member($adapayConfig);
+        $service = new Refund($adapayConfig);
         $res = $service->create($params);
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
 
         //断言错误结果
-        $this->assertEquals('failed', $res['data']['status']);
+//        $this->assertEquals('failed', $res['data']['status']);
 
         //断言正常结果
         $this->assertEquals('succeeded', $res['data']['status']);
     }
 
 
+    public function testQuery(): void
+    {
+        $params = [
+            'payment_id' => ''
+        ];
+        $config = Config::getConfig();
+        $adapayConfig = new AdapayConfig($config);
+        $service = new Refund($adapayConfig);
+        $res = $service->query($params);
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
+
+        //断言错误结果
+//        $this->assertEquals('failed', $res['data']['status']);
+
+        //断言正常结果
+        $this->assertEquals('succeeded', $res['data']['status']);
+    }
 }

@@ -71,7 +71,7 @@ class ClientTest extends TestCase
         $adapayConfig = new AdapayConfig($config);
         $service = new SettleAccount($adapayConfig);
         $res = $service->create($params);
-        var_dump($res);
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
 
         //断言错误结果
         $this->assertEquals('failed', $res['data']['status']);
@@ -92,9 +92,7 @@ class ClientTest extends TestCase
         $adapayConfig = new AdapayConfig($config);
         $service = new SettleAccount($adapayConfig);
         $res = $service->delete($params);
-
-
-        var_dump($res);
+        echo json_encode($res, JSON_UNESCAPED_UNICODE);
 
         //断言错误结果
 //        $this->assertEquals('failed', $res['data']['status']);
