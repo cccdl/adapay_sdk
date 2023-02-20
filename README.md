@@ -53,6 +53,7 @@ $ composer require cccdl/yunxin_sdk
 | PaymentsConfirm.php | `create()`    | 创建支付确认对象   |
 | Refund.php          | `create()`    | 创建退款对象     |
 | Refund.php          | `query()`     | 查询退款对象     |
+| Payment.php         | `create()`    | 查询退款对象     |
 
 ### 快速使用
 
