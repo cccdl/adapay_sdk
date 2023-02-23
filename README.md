@@ -22,6 +22,7 @@
 - 2.1.0 增加【创建结算账户对象】【查询结算账户对象】【删除结算账户对象】接口
 - 2.2.0 增加【创建退款对象】【查询退款对象】【创建支付确认对象】【查询支付确认对象】【查询支付确认对象列表】【创建支付撤销对象】【查询支付撤销对象】【查询支付撤销对象列表】接口
 - 2.3.0 增加【创建支付对象】接口
+- 2.4.0 增加【查询支付对象】【查询支付对象列表】【创建支付关单】接口
 
 ### 更新计划
 
@@ -36,6 +37,8 @@ $ composer require cccdl/yunxin_sdk
 ```
 
 ### 接口对应文件
+
+了解[接口参数](https://docs.adapay.tech/api/apipath.html#)，点击快速进入
 
 | 文件                  | 方法            | 说明         |
 |---------------------|---------------|------------|
@@ -53,7 +56,10 @@ $ composer require cccdl/yunxin_sdk
 | PaymentsConfirm.php | `create()`    | 创建支付确认对象   |
 | Refund.php          | `create()`    | 创建退款对象     |
 | Refund.php          | `query()`     | 查询退款对象     |
-| Payment.php         | `create()`    | 查询退款对象     |
+| Payment.php         | `create()`    | 创建支付对象     |
+| Payment.php         | `query()`     | 查询支付对象     |
+| Payment.php         | `queryList()` | 查询支付对象列表   |
+| Payment.php         | `close()`     | 创建支付关单     |
 
 ### 快速使用
 

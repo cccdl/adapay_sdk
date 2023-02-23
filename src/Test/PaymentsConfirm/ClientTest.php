@@ -63,7 +63,9 @@ class ClientTest extends TestCase
     public function testQueryList(): void
     {
         $params = [
-            'app_id' => ''
+            'app_id' => '',
+            'page_index' => 8,
+            'page_size' => 20,
         ];
         $config = Config::getConfig();
         $adapayConfig = new AdapayConfig($config);
