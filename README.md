@@ -1,4 +1,4 @@
-# 汇付天下 SDK for PHP  !
+l# 汇付天下 SDK for PHP  !
 
 ### 主要新特性
 
@@ -33,7 +33,7 @@
 > 运行环境要求PHP7.1+。
 
 ```shell
-$ composer require cccdl/yunxin_sdk
+$ composer require cccdl/adapay_sdk
 ```
 
 ### 接口对应文件
