@@ -23,6 +23,7 @@
 - 2.2.0 增加【创建退款对象】【查询退款对象】【创建支付确认对象】【查询支付确认对象】【查询支付确认对象列表】【创建支付撤销对象】【查询支付撤销对象】【查询支付撤销对象列表】接口
 - 2.3.0 增加【创建支付对象】接口
 - 2.4.0 增加【查询支付对象】【查询支付对象列表】【创建支付关单】接口
+- 2.5.0 增加【异步回调验签】
 
 ### 更新计划
 
@@ -61,6 +62,7 @@ $ composer require cccdl/adapay_sdk
 | Payment.php         | `query()`     | 查询支付对象     |
 | Payment.php         | `queryList()` | 查询支付对象列表   |
 | Payment.php         | `close()`     | 创建支付关单     |
+| SignTool.php        | `checkSign()` | 验签是否正确     |
 
 ### 快速使用
 
@@ -69,7 +71,7 @@ $ composer require cccdl/adapay_sdk
 ```php
 <?php
 
-use cccdl\adapay\Settle\SettleAccount;;
+use cccdl\adapay\Settle\SettleAccount;
 //请求数组
 $params = [
     'app_id' => 'app_id',
@@ -83,6 +85,18 @@ $adapayConfig = new AdapayConfig($config);
 $service = new SettleAccount($adapayConfig);
 $res = $service->balance($params);
 //结果
+var_dump($res);
+```
+
+```php
+<?php
+
+use cccdl\adapay\SignTool\SignTool;
+
+$adapayConfig = new AdapayConfig($config);
+$service = new SignTool($adapayConfig);
+$res = $service->checkSign();
+//结果 true=验签成功，false=验签失败
 var_dump($res);
 ```
 

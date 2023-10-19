@@ -161,4 +161,21 @@ class BaseCore
         }
         return base64_encode($signature);
     }
+
+    /**
+     * 验签
+     * @param $signature
+     * @param $data
+     * @return bool
+     */
+    public function verifySign($signature, $data)
+    {
+        $pubKey = $this->adapayConfig->rsaPublicKey;
+        $key = "-----BEGIN PUBLIC KEY-----\n" . wordwrap($pubKey, 64, "\n", true) . "\n-----END PUBLIC KEY-----";
+        if (openssl_verify($data, base64_decode($signature), $key)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
