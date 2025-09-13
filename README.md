@@ -122,5 +122,4 @@ _The code contribution process is not very formal. You just need to make sure th
 PSR-2 coding guidelines. Any new code contributions must be accompanied by unit tests where applicable._
 
 ## License
-
-MIT
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
